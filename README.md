@@ -1,28 +1,28 @@
-# Прогнозные модели для отбора коров молочного хозяйства «Вольный луг»
+# Dairy Farm Cattle Selection — ML Models
 
-ML-модели для поддержки принятия решений о закупке коров на основе прогноза удоя и вкуса молока.
+ML models to support cattle purchase decisions based on milk yield and milk taste predictions.
 
-## Данные
-- **Источник:** внутренние данные молочного хозяйства «Вольный луг»
-- **Размер:** 634 коровы (обучающая выборка), 20 коров-кандидатов («ЭкоФерма»)
-- **Признаки:** порода, тип пастбища, родословная, показатели питания (ЭКЕ, СПО, сырой протеин), характеристики молока
+## Data
+- **Source:** dairy farm internal data
+- **Size:** 634 cows (training set), 20 candidate cows (supplier)
+- **Features:** breed, pasture type, pedigree, nutrition metrics (energy, fiber, crude protein), milk characteristics
 
-## Ход работы
-- Предобработка данных: обработка пропусков, устранение дубликатов, приведение типов
-- EDA: анализ распределений, корреляционный анализ (phik)
-- Feature Engineering признаков: добавление ЭКЕ², бинаризация СПО, объединение с родословными данными
-- Построение трёх моделей линейной регрессии для прогноза удоя, выбор лучшей (R²=0.85)
-- Построение модели логистической регрессии для классификации вкуса молока
-- Оптимизация порога классификации под бизнес-задачу (максимизация precision)
-- Прогноз удоя и вкуса молока для 20 коров-кандидатов
+## Workflow
+- Data preprocessing: handling missing values, duplicate removal, type conversion
+- EDA: distribution analysis, correlation analysis (Phik)
+- Feature engineering: adding squared energy feature, fiber binarization, merging pedigree data
+- Three linear regression models for milk yield prediction, best model selection (R²=0.85)
+- Logistic regression model for milk taste classification
+- Classification threshold optimization for the business objective (precision maximization)
+- Milk yield and taste prediction for 20 candidate cows
 
-## Ключевые выводы
-- **Модель удоя:** R²=0.85; итеративное улучшение через инжиниринг признаков подняло качество с 0.82 до 0.85; 17 из 20 коров «ЭкоФермы» преодолевают порог в 6000 кг/год
-- **Модель вкуса:** после оптимизации порога до 0.795 precision=0.93 — модель одобряет корову только при высокой уверенности в качестве молока
-- **Итог:** из 20 кандидатов оба критерия (удой ≥6000 кг + вкусное молоко) выполняют 2 коровы
-- **Ограничения:** небольшой объём выборки ограничивает качество классификации; финальное решение рекомендуется принимать с учётом стоимости животного и истории здоровья
+## Key Findings
+- **Yield model:** R²=0.85; iterative improvement through feature engineering raised quality from 0.82 to 0.85; 17 out of 20 supplier cows meet the 6,000 kg/year threshold
+- **Taste model:** after threshold optimization to 0.795, precision=0.93 — the model approves a cow only when highly confident in milk quality
+- **Result:** out of 20 candidates, only 2 cows meet both criteria (yield ≥6,000 kg + good taste)
+- **Limitations:** small training set limits classification quality; final purchase decisions should also consider animal cost and health history
 
-## Стек
+## Tech Stack
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Pandas](https://img.shields.io/badge/Pandas-lightgrey)
 ![Scikit--learn](https://img.shields.io/badge/Scikit--learn-lightgrey)
@@ -30,8 +30,8 @@ ML-модели для поддержки принятия решений о з�
 ![Seaborn](https://img.shields.io/badge/Seaborn-lightgrey)
 ![Phik](https://img.shields.io/badge/Phik-lightgrey)
 
-## Структура репозитория
+## Repository Structure
 ```
-├── dairy_farm_ml_models.ipynb  # основной ноутбук
+├── dairy_farm_ml_models.ipynb  # main notebook
 └── README.md
 ```
